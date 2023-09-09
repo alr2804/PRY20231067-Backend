@@ -6,6 +6,9 @@ function UserRoutes(app){
     app.use('/users', router);
 
     router.get('/', UserController.getUsers);
+    router.get('/:id', UserController.getUser);
+    router.put('/:id', UserController.updateUser);
+    router.delete('/:id', UserController.deleteUser);
 }
 
 module.exports = {UserRoutes};

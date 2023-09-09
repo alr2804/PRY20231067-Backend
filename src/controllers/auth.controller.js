@@ -34,11 +34,14 @@ const SignIn = async(req, res) => {
 
 const SignUp = async(req, res) => {
     try{
+        console.log(req.body)
         const {firstname , lastname, username, email, password } = req.body;
+
         //hash password
         const salt = await bcrypt.genSalt(10);
         //Encriptamos la contraseña
         const passwordEncrypt = await bcrypt.hash(password, salt)
+
         //Se crea el usuario
         const newUser = await new User({
             firstname,
@@ -50,6 +53,7 @@ const SignUp = async(req, res) => {
 
         //Guardamos el usuario en la bd
         const userSaved = await newUser.save();
+
         console.log('userSaved', userSaved);
         //Se crea un token para el cliente y expira en 1 hora (3600 segundos)
         const token = jwt.sign({id: userSaved._id}, process.env.JWT_SECRET_KEY , {expiresIn: 3600}); 
