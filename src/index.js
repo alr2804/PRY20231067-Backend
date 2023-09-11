@@ -1,5 +1,5 @@
 const app = require('./app');
-require('../config/database');
+require('./config/database');
 
 
 

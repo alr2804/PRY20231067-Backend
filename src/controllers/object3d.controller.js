@@ -47,7 +47,7 @@ const updateObject3D = async (req, res) => {
     const {id} = req.params;
     const {body} = req;
 
-    const object3dUpdated = await User.findByIdAndUpdate(id, body);
+    const object3dUpdated = await Object3D.findByIdAndUpdate(id, body);
     if(!object3dUpdated){
         return res.status(404).send({message: "Object 3D not found"})
     }
