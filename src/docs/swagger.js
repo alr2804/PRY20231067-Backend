@@ -4,6 +4,7 @@ const authSchema = require('./schemas/auth.schema');
 const userSchema = require('./schemas/user.schema');
 const object3dSchema = require('./schemas/object3d.schema');
 const souvenirSchema = require('./schemas/souvenir.schema');
+const placeSchema = require('./schemas/place.schema')
 
 
 
@@ -16,7 +17,7 @@ const swaggerDefinition = {
     },
     servers: [
         {
-            url: "http://localhost:3000"
+            url: process.env.DATABASE_MONGO_URL || "http://localhost:3000"
         }
     ],
     components: {
@@ -37,7 +38,8 @@ const swaggerDefinition = {
             // OBJECT 3D
             object3d: object3dSchema.object3d,
             // SOUVENIR
-            souvenir: souvenirSchema.souvenir
+            souvenir: souvenirSchema.souvenir,
+            place: placeSchema.place
             // // CONTACT BOOK
             // contactBook : contactBookSchema.contactBook,
             // createContactBook: contactBookSchema.createContactBook,
