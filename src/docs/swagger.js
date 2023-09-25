@@ -17,7 +17,7 @@ const swaggerDefinition = {
     },
     servers: [
         {
-            url: process.env.DATABASE_MONGO_URL || "http://localhost:3000"
+            url: process.env.API_RENDER_URL || "http://localhost:3000"
         }
     ],
     components: {
