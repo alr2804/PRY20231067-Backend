@@ -1,38 +1,37 @@
 const {Router} = require('express');
 const router = Router();
-const {PlaceController} = require('../../controllers/place.controller');
+const {ReviewController} = require('../../controllers/review.controller');
 
-function PlaceRoutes(app){
-    app.use('/places', router);
+function ReviewRoutes(app){
+    app.use('/reviews', router);
 
 
      /**
      * @openapi
-     * /places:
+     * /reviews:
      *  get:
      *      tags:
-     *          - Place
-     *      summary: "Obtener todos los lugares"
+     *          - Review
+     *      summary: "Obtener todas las reseñas"
      *      responses: 
      *          '200':
-     *              description: Obtuvo todos los lugares con éxito
+     *              description: Obtuvo todas las reseñas con éxito
      *          '400':
      *              description: Ocurrió un error 400 (Bad Request)
      *      security:
      *          - bearerAuth: []
      */
-    router.get('/', PlaceController.getPlaces);
+    router.get('/', ReviewController.getReviews);
 
-    
-    
-    /**
+
+     /**
      * @openapi
-     * /places/{id}:
+     * /reviews/getReviewByPlaceID/{id}:
      *  get:
      *      tags:
-     *          - Place
-     *      summary: "Obtener un lugaren específico"
-     *      description: "Obtiene un lugar mediante su ID"
+     *          - Review
+     *      summary: "Obtener reseñas por el ID del lugar"
+     *      description: "Obtener reseñas por el ID del lugar"
      *      parameters:
      *          - in: path
      *            name: id
@@ -42,56 +41,56 @@ function PlaceRoutes(app){
      *              type: string
      *      responses:
      *          '200':
-     *              description: Lugar obtenido
+     *              description: Reseña obtenida
      *              content:
      *                  application/json:
      *                      schema:
-     *                          $ref: '#/components/schemas/place'
+     *                          $ref: '#/components/schemas/review'
      *          '404':
-     *              description: Lugar no encontrado
+     *              description: Reseña no encontrada
      * 
      */
-    router.get('/:id', PlaceController.getPlaceByID)
+    router.get('/getReviewByPlaceID/:id', ReviewController.getReviewByPlaceID);
 
     
     /**
      * @openapi
-     * /places:
+     * /reviews:
      *  post:
      *      tags:
-     *          - Place
-     *      summary: "Create place"
-     *      description: "Crear un lugar"
+     *          - Review
+     *      summary: "Create review"
+     *      description: "Crear una reseña"
      *      requestBody:
-     *          description: Objeto modelo para crear un lugar
+     *          description: Objeto modelo para crear una reseña
      *          content: 
      *              application/json:
      *                  schema:
-     *                      $ref: '#/components/schemas/place'
+     *                      $ref: '#/components/schemas/review'
      *      responses:
      *          '200':
-     *              description: Lugar creado
+     *              description: Reseña creada
      *              content:
      *                  application/json:
      *                      schema:
-     *                          $ref: '#/components/schemas/place'
+     *                          $ref: '#/components/schemas/review'
      * 
      */
-    router.post('/', PlaceController.createPlace);
+    router.post('/', ReviewController.createReview);
 
     
      /**
      * @openapi
-     * /places/{id}:
+     * /reviews/{id}:
      *  put:
      *      tags:
-     *          - Place
-     *      summary: "Actualizar lugar"
+     *          - Review
+     *      summary: "Actualizar reseña"
      *      description: "Actualiza los campos del lugar mediante su ID"
      *      parameters:
      *          - in: path
      *            name: id
-     *            description: 'Place ID'
+     *            description: 'Review ID'
      *            required: true
      *            schema:
      *              type: string
@@ -100,47 +99,47 @@ function PlaceRoutes(app){
      *          content: 
      *              application/json:
      *                  schema:
-     *                      $ref: '#/components/schemas/place'
+     *                      $ref: '#/components/schemas/reviewUpdate'
      *      responses:
      *          '200':
      *              description: Lugar actualizado
      *              content:
      *                  application/json:
      *                      schema:
-     *                          $ref: '#/components/schemas/place'
+     *                          $ref: '#/components/schemas/review'
      *          
      * 
      */
-    router.put('/:id', PlaceController.updatePlace);
+    router.put('/:id', ReviewController.updateReview);
 
     
     /**
      * @openapi
-     * /places/{id}:
+     * /reviews/{id}:
      *  delete:
      *      tags:
-     *          - Place
-     *      summary: "Borrar lugar"
-     *      description: "Borra un lugar mediante su ID"
+     *          - Review
+     *      summary: "Borrar reseña"
+     *      description: "Borra una reseña mediante su ID"
      *      parameters:
      *          - in: path
      *            name: id
-     *            description: 'Place ID'
+     *            description: 'Review ID'
      *            required: true
      *            schema:
      *              type: string
      *      responses:
      *          '200':
-     *              description: Lugar eliminado
+     *              description: Reseña eliminada
      *              content:
      *                  application/json:
      *                      schema:
-     *                          $ref: '#/components/schemas/place'
+     *                          $ref: '#/components/schemas/reseña'
      *          
      *      security:
      *         - bearerAuth: []
      */
-    router.delete('/:id', PlaceController.deletePlace);
+    router.delete('/:id', ReviewController.deleteReview);
 }
 
-module.exports = {PlaceRoutes};
+module.exports = {ReviewRoutes};

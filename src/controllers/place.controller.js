@@ -10,6 +10,20 @@ const getPlaces = async (req, res) => {
     } 
 }
 
+const getPlaceByID = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const place = await Place.findById(id);
+        if(!place) {
+            return res.status(404).send({message:"Place not found"});
+        }
+        return res.status(200).json({data:place});
+    } catch(err) {
+        return res.status(400).send({error: err})
+    }
+    
+}
+
 
  
 
@@ -52,6 +66,7 @@ const deletePlace = async (req, res) => {
 
 module.exports.PlaceController = {
     getPlaces,
+    getPlaceByID,
     createPlace,
     updatePlace,
     deletePlace

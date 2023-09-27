@@ -13,6 +13,13 @@ const PlaceSchema = new Schema({
         type: String,
         required: [true, 'You must put the photo'],
     },
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Review',
+            default: []
+        }
+    ]
 
 }, {
     timestamps: true,

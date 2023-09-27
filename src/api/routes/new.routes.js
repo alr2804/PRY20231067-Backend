@@ -1,146 +1,144 @@
 const {Router} = require('express');
 const router = Router();
-const {PlaceController} = require('../../controllers/place.controller');
+const {NewController} = require('../../controllers/news.controller');
 
-function PlaceRoutes(app){
-    app.use('/places', router);
+function NewRoutes(app){
+    app.use('/news', router);
 
-
+    
      /**
      * @openapi
-     * /places:
+     * /news:
      *  get:
      *      tags:
-     *          - Place
-     *      summary: "Obtener todos los lugares"
+     *          - News
+     *      summary: "Obtener todas las noticias"
      *      responses: 
      *          '200':
-     *              description: Obtuvo todos los lugares con éxito
+     *              description: Obtuvo todos los souvenirs con éxito
      *          '400':
      *              description: Ocurrió un error 400 (Bad Request)
      *      security:
      *          - bearerAuth: []
      */
-    router.get('/', PlaceController.getPlaces);
+    router.get('/', NewController.getNews)
 
-    
     
     /**
      * @openapi
-     * /places/{id}:
+     * /news/{id}:
      *  get:
      *      tags:
-     *          - Place
-     *      summary: "Obtener un lugaren específico"
-     *      description: "Obtiene un lugar mediante su ID"
+     *          - News
+     *      summary: "Obtener una noticia en específico"
+     *      description: "Obtiene un souvenir mediante su ID"
      *      parameters:
      *          - in: path
      *            name: id
-     *            description: 'Place ID'
+     *            description: 'New ID'
      *            required: true
      *            schema:
      *              type: string
      *      responses:
      *          '200':
-     *              description: Lugar obtenido
+     *              description: Noticia obtenida
      *              content:
      *                  application/json:
      *                      schema:
-     *                          $ref: '#/components/schemas/place'
+     *                          $ref: '#/components/schemas/new'
      *          '404':
-     *              description: Lugar no encontrado
+     *              description: Noticia no encontrada
      * 
      */
-    router.get('/:id', PlaceController.getPlaceByID)
+    router.get('/:id', NewController.getNewByID)
 
-    
     /**
      * @openapi
-     * /places:
+     * /news:
      *  post:
      *      tags:
-     *          - Place
-     *      summary: "Create place"
-     *      description: "Crear un lugar"
+     *          - News
+     *      summary: "Create new"
+     *      description: "Crear una noticia"
      *      requestBody:
-     *          description: Objeto modelo para crear un lugar
+     *          description: Objeto modelo para crear una noticia
      *          content: 
      *              application/json:
      *                  schema:
-     *                      $ref: '#/components/schemas/place'
+     *                      $ref: '#/components/schemas/new'
      *      responses:
      *          '200':
-     *              description: Lugar creado
+     *              description: Noticia creada
      *              content:
      *                  application/json:
      *                      schema:
-     *                          $ref: '#/components/schemas/place'
+     *                          $ref: '#/components/schemas/new'
      * 
      */
-    router.post('/', PlaceController.createPlace);
+    router.post('/', NewController.createNew);
 
     
      /**
      * @openapi
-     * /places/{id}:
+     * /news/{id}:
      *  put:
      *      tags:
-     *          - Place
-     *      summary: "Actualizar lugar"
-     *      description: "Actualiza los campos del lugar mediante su ID"
+     *          - News
+     *      summary: "Actualizar noticia"
+     *      description: "Actualiza los campos de la noticia mediante su ID"
      *      parameters:
      *          - in: path
      *            name: id
-     *            description: 'Place ID'
+     *            description: 'New ID'
      *            required: true
      *            schema:
      *              type: string
      *      requestBody:
-     *          description: Campos del lugar
+     *          description: Campos de la noticia
      *          content: 
      *              application/json:
      *                  schema:
-     *                      $ref: '#/components/schemas/place'
+     *                      $ref: '#/components/schemas/new'
      *      responses:
      *          '200':
-     *              description: Lugar actualizado
+     *              description: Noticia actualizada
      *              content:
      *                  application/json:
      *                      schema:
-     *                          $ref: '#/components/schemas/place'
+     *                          $ref: '#/components/schemas/new'
      *          
      * 
      */
-    router.put('/:id', PlaceController.updatePlace);
+    router.put('/:id', NewController.updateNew);
 
     
     /**
      * @openapi
-     * /places/{id}:
+     * /news/{id}:
      *  delete:
      *      tags:
-     *          - Place
-     *      summary: "Borrar lugar"
-     *      description: "Borra un lugar mediante su ID"
+     *          - News
+     *      summary: "Borrar noticia"
+     *      description: "Borra una noticia mediante su ID"
      *      parameters:
      *          - in: path
      *            name: id
-     *            description: 'Place ID'
+     *            description: 'New ID'
      *            required: true
      *            schema:
      *              type: string
      *      responses:
      *          '200':
-     *              description: Lugar eliminado
+     *              description: Noticia eliminada
      *              content:
      *                  application/json:
      *                      schema:
-     *                          $ref: '#/components/schemas/place'
+     *                          $ref: '#/components/schemas/new'
      *          
      *      security:
      *         - bearerAuth: []
      */
-    router.delete('/:id', PlaceController.deletePlace);
+    router.delete('/:id', NewController.deleteNew);
 }
 
-module.exports = {PlaceRoutes};
+module.exports = {NewRoutes};

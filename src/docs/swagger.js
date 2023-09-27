@@ -5,6 +5,10 @@ const userSchema = require('./schemas/user.schema');
 const object3dSchema = require('./schemas/object3d.schema');
 const souvenirSchema = require('./schemas/souvenir.schema');
 const placeSchema = require('./schemas/place.schema')
+const reviewSchema = require('./schemas/review.schema')
+const newSchema = require('./schemas/new.schema')
+const postForoSchema = require('./schemas/postForo.schema')
+
 
 
 
@@ -39,12 +43,18 @@ const swaggerDefinition = {
             object3d: object3dSchema.object3d,
             // SOUVENIR
             souvenir: souvenirSchema.souvenir,
-            place: placeSchema.place
-            // // CONTACT BOOK
-            // contactBook : contactBookSchema.contactBook,
-            // createContactBook: contactBookSchema.createContactBook,
-            // updateContactBook: contactBookSchema.updateContactBook,
-            // addContact: contactBookSchema.addContact,
+            //PLACE
+            place: placeSchema.place,
+            //REVIEW
+            review: reviewSchema.review,
+            reviewUpdate: reviewSchema.reviewUpdate,
+            // NEWS
+            new: newSchema.new,
+            // POST FORO
+            postForo: postForoSchema.postForo,
+            postForoUpdate: postForoSchema.postForoUpdate
+
+
            
         }
     }
