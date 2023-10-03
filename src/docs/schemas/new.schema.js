@@ -7,7 +7,7 @@ const newSchema = {
                 type: "string"
             },
             content: {
-                type: "number"
+                type: "string"
             },
             image: {
                 type: "string"

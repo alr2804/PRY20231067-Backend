@@ -19,7 +19,15 @@ const PlaceSchema = new Schema({
             ref: 'Review',
             default: []
         }
-    ]
+    ],
+    longitude: {
+        type: Number,
+        required: [true, 'You must put the longitude']
+    },
+    latitude: {
+        type: Number,
+        required: [true, 'You must put the latitude']
+    }
 
 }, {
     timestamps: true,

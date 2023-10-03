@@ -3,7 +3,7 @@ const PostForo = require('../models/PostForo');
 
 const getPostsForo = async (req, res) => {
     try{
-        const posts = await PostForo.find();
+        const posts = await PostForo.find().populate('_user');
         res.status(200).json({message: 'Get post foro', data: posts});
     } catch(err) {
         console.log('err', err);
@@ -29,9 +29,9 @@ const getPostForoByID = async (req, res) => {
 
 const createPostForo = async (req, res) => {
     try{
-        const {titular, content, _user} = req.body;
-        const newPostForo = new New({
-            titular,
+        const {title, content, _user} = req.body;
+        const newPostForo = new PostForo({
+            title,
             content,
             _user
         });

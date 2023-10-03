@@ -29,11 +29,13 @@ const getPlaceByID = async (req, res) => {
 
 const createPlace = async (req, res) => {
     try{
-        const {name, description, photo} = req.body;
+        const {name, description, photo, longitude, latitude} = req.body;
         const newPlace = new Place({
             name,
             description,
-            photo
+            photo, 
+            longitude, 
+            latitude
         });
         const placeRequestSaved = await newPlace.save();
         res.status(201).json({data: placeRequestSaved});

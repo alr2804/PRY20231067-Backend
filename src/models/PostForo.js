@@ -3,7 +3,7 @@ const {Schema, model} = require('mongoose');
 const postForoSchema = new Schema({
     title: {
         type: String,
-        required: [true, 'You must put the titular'],
+        required: [true, 'You must put the title'],
     },
     content: {
         type: String,

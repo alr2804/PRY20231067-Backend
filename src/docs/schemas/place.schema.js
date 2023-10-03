@@ -11,6 +11,12 @@ const placeSchema = {
             },
             photo: {
                 type: "string"
+            },
+            latitude: {
+                type: 'number'
+            },
+            longitude: {
+                type: 'number'
             }
         }
     },        
