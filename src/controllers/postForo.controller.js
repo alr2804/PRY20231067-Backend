@@ -29,9 +29,8 @@ const getPostForoByID = async (req, res) => {
 
 const createPostForo = async (req, res) => {
     try{
-        const {title, content, _user} = req.body;
+        const {content, _user} = req.body;
         const newPostForo = new PostForo({
-            title,
             content,
             _user
         });

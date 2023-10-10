@@ -1,11 +1,8 @@
 const postForoSchema = {
     postForo: {
         type: "object",
-        required: ["title", "content", "_user"],
+        required: ["content", "_user"],
         properties: {
-            title: {
-                type: "string"
-            },
             content: {
                 type: "string"
             },
@@ -16,11 +13,8 @@ const postForoSchema = {
     },
     postForoUpdate: {
         type: "object",
-        required: ["title", "content"],
+        required: ["content"],
         properties: {
-            title: {
-                type: "string"
-            },
             content: {
                 type: "number"
             },
