@@ -44,10 +44,11 @@ const getPostForoByuserID = async (req, res) => {
 const createPostForo = async (req, res) => {
     try{
         const {content, _user} = req.body;
+        console.log('req.body', req.body)
         const newPostForo = new PostForo({
             content,
             _user
-        }).populate('_user');
+        });
         const postForoRequestSaved = await newPostForo.save();
         res.status(201).json({data: postForoRequestSaved});
     } catch (err) {
