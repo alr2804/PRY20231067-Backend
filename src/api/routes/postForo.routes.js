@@ -54,6 +54,34 @@ function PostForoRoutes(app){
 
     /**
      * @openapi
+     * /postsForo/getPostForoByuserID/{id}:
+     *  get:
+     *      tags:
+     *          - Post Foro
+     *      summary: "Obtener publicaciones por ID del usuario"
+     *      description: "Obtiene publicaciones por ID del usuario"
+     *      parameters:
+     *          - in: path
+     *            name: id
+     *            description: 'User ID'
+     *            required: true
+     *            schema:
+     *              type: string
+     *      responses:
+     *          '200':
+     *              description: User obtenido
+     *              content:
+     *                  application/json:
+     *                      schema:
+     *                          $ref: '#/components/schemas/postForo'
+     *          '404':
+     *              description: Publicaciones no encontradas
+     * 
+     */
+    router.get('/getPostForoByuserID/:id', PostForoController.getPostForoByuserID)
+
+    /**
+     * @openapi
      * /postsForo:
      *  post:
      *      tags:

@@ -24,6 +24,20 @@ const getPostForoByID = async (req, res) => {
     
 }
 
+const getPostForoByuserID = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const postForo = await PostForo.find({_user: id}).populate('_user')
+        if(!postForo) {
+            return res.status(404).send({message:"Posts Foro not found"});
+        }
+        return res.status(200).json({data:postForo});
+    } catch(err) {
+        return res.status(400).send({error: err})
+    }
+    
+}
+
 
  
 
@@ -33,11 +47,11 @@ const createPostForo = async (req, res) => {
         const newPostForo = new PostForo({
             content,
             _user
-        });
-        const postForoRequestSaved = (await newPostForo.save()).populate('_user');
+        }).populate('_user');
+        const postForoRequestSaved = await newPostForo.save();
         res.status(201).json({data: postForoRequestSaved});
     } catch (err) {
-        return res.status(400).send({err});
+        return res.status(400).send({err:err});
     }
     
 }
@@ -66,6 +80,7 @@ const deletePostForo = async (req, res) => {
 module.exports.PostForoController = {
     getPostsForo,
     getPostForoByID,
+    getPostForoByuserID,
     createPostForo,
     updatePostForo,
     deletePostForo

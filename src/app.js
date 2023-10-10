@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+var morgan = require('morgan')
 
 const swaggerUI = require('swagger-ui-express');
 const swaggerSetup = require('./docs/swagger');
@@ -16,6 +17,7 @@ app.use('/documentation', swaggerUI.serve, swaggerUI.setup(swaggerSetup));
 app.use(express.json());
 
 app.use(cors());
+morgan('tiny')
 
 indexRoutes(app);
 
