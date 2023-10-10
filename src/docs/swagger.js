@@ -8,6 +8,7 @@ const placeSchema = require('./schemas/place.schema')
 const reviewSchema = require('./schemas/review.schema')
 const newSchema = require('./schemas/new.schema')
 const postForoSchema = require('./schemas/postForo.schema')
+const userObjectSchema = require('./schemas/user_object.schema')
 
 
 
@@ -52,7 +53,10 @@ const swaggerDefinition = {
             new: newSchema.new,
             // POST FORO
             postForo: postForoSchema.postForo,
-            postForoUpdate: postForoSchema.postForoUpdate
+            postForoUpdate: postForoSchema.postForoUpdate,
+            // USER OBJECT 3D
+            user_object: userObjectSchema.user_object
+
 
 
            
