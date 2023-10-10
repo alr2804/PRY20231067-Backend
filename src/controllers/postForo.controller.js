@@ -34,7 +34,7 @@ const createPostForo = async (req, res) => {
             content,
             _user
         });
-        const postForoRequestSaved = await newPostForo.save();
+        const postForoRequestSaved = (await newPostForo.save()).populate('_user');
         res.status(201).json({data: postForoRequestSaved});
     } catch (err) {
         return res.status(400).send({err});
