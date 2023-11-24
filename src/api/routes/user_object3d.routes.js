@@ -27,7 +27,7 @@ function UserObjectRoutes(app){
      *              type: string
      *      responses: 
      *          '200':
-     *              description: Obtuvo todos los usuarios con su objecto 3d con éxito
+     *              description: Obtuvo todos los usuarios con su ob5jecto 3d con éxito
      *          '400':
      *              description: Ocurrió un error 400 (Bad Request)
      *      security:
